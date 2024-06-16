@@ -67,6 +67,14 @@ public class TroopServiceImpl implements TroopService {
     }
 
     /**
+     * Function to remove all Troops.
+     */
+    @Override
+    public void deleteAllTroop() {
+        troopRepository.deleteAll();
+    }
+
+    /**
      * Function to check if a Troop exists.
      * @param _id Requires a Troop ID to be searched.
      * @return Returns true if the troop exists.

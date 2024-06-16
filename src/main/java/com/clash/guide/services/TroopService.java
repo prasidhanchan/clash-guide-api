@@ -16,5 +16,7 @@ public interface TroopService {
 
     void deleteTroop(String _id);
 
+    void deleteAllTroop();
+
     Boolean isExits(String _id);
 }
