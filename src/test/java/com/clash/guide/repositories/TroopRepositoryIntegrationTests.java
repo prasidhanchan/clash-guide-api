@@ -74,6 +74,17 @@ public class TroopRepositoryIntegrationTests {
     }
 
     @Test
+    public void testDeleteAllTroops() {
+        Troop troopA = TestUtils.createTroopA();
+        Troop troopB = TestUtils.createTroopB();
+        troopService.addTroop(troopA);
+        troopService.addTroop(troopB);
+        troopService.deleteAllTroop();
+        List<Troop> troops = troopRepository.findAll();
+        assertThat(troops).isEmpty();
+    }
+
+    @Test
     public void testIsExists() {
         troopRepository.deleteAll();
 
