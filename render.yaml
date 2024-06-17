@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: clash-guide-api
+    env: docker
+    repo: https://github.com/prasidhanchan/clash-guide-api.git
+    plan: free
+    branch: main
+    envVars:
+      - key: PORT
+        value: 8080
