@@ -114,7 +114,7 @@ public class TroopController {
                 );
             } else {
                 return new ResponseEntity<>(
-                        "Pokemon not found!",
+                        "Troop not found!",
                         HttpStatus.NOT_FOUND
                 );
             }
