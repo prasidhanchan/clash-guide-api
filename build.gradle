@@ -1,7 +1,19 @@
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath "com.github.johnrengelman:shadow:8.1.1"
+	}
+}
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.0'
 	id 'io.spring.dependency-management' version '1.1.5'
+	id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 
 group = 'com.clash.guide'
@@ -25,14 +37,29 @@ repositories {
 
 dependencies {
 
-	implementation 'com.amazonaws.serverless:aws-serverless-java-container-spring:2.0.1'
+	implementation 'com.amazonaws.serverless:aws-serverless-java-container-spring:2.0.3'
+	implementation 'com.amazonaws.serverless:aws-serverless-java-container-core:2.0.3'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('com.amazonaws.serverless:aws-serverless-java-container-core:2.0.3')
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+apply plugin: "com.github.johnrengelman.shadow"
+assemble.dependsOn = [shadowJar]
+
+shadowJar {
+	archiveFileName = "${project.name}-${project.version}-all.jar"
+	mergeServiceFiles {
+		include 'META-INF/spring.handlers'
+		include 'META-INF/spring.schemas'
+		include 'META-INF/spring.tooling'
+		include 'META-INF/spring.factories'
+	}
 }
 
 tasks.named('test') {

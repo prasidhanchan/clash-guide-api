@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Clash Guide API
+Globals:
+  Api:
+    EndpointConfiguration: REGIONAL
+
+Resources:
+  ClashGuideFunction:
+    Type: AWS::Serverless::Function
+    StageName : prod
+    Properties:
+      CodeUri: .
+      Handler: com.clash.guide.LambdaHandler::handleRequest
+      Runtime: java21
+      Architectures:
+        - x86_64
+      AutoPublishAlias: prod
+      SnapStart:
+        ApplyOn: PublishedVersions
+      MemorySize: 512
+      Policies: AWSLambdaBasicExecutionRole
+      Timeout: 30
+      Events:
+        ProxyResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+
+Outputs:
+  ClashGuideApi:
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/'
+    Export:
+      Name: clash-guide-api

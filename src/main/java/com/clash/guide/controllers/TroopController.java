@@ -24,6 +24,7 @@ public class TroopController {
 
     /**
      * Function to add a Troop.
+     *
      * @param key   This field is required for security purpose.
      * @param troop The actual Troop to be added.
      * @return returns a String response.
@@ -54,6 +55,7 @@ public class TroopController {
 
     /**
      * Function to get all Troops.
+     *
      * @return returns a String response.
      */
     @GetMapping("/get-all-troops")
@@ -66,6 +68,7 @@ public class TroopController {
 
     /**
      * Function to update a Troop.
+     *
      * @param key   This field is required for security purpose.
      * @param troop The actual Troop to be added.
      * @return returns a String response.
@@ -96,6 +99,7 @@ public class TroopController {
 
     /**
      * Function to delete a Troop.
+     *
      * @param key This field is required for security purpose.
      * @param _id The id of the Troop to be deleted.
      * @return returns a String response.
@@ -133,6 +137,7 @@ public class TroopController {
 
     /**
      * Function to delete all Troops.
+     *
      * @param key This field is required for security purpose.
      * @return returns a String response.
      */

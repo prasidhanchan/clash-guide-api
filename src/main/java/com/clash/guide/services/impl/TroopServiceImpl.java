@@ -20,6 +20,7 @@ public class TroopServiceImpl implements TroopService {
 
     /**
      * Function to add a Troop.
+     *
      * @param troop Actual Troop to be added to database.
      */
     @Override
@@ -29,6 +30,7 @@ public class TroopServiceImpl implements TroopService {
 
     /**
      * Function to get all Troop.
+     *
      * @param pageable Requires to get all troops as a Page.
      * @return Returns a all Troops.
      */
@@ -39,6 +41,7 @@ public class TroopServiceImpl implements TroopService {
 
     /**
      * Function to update a Troop.
+     *
      * @param troop Actual Troop to be updated.
      */
     @Override
@@ -59,6 +62,7 @@ public class TroopServiceImpl implements TroopService {
 
     /**
      * Function to remove a Troop.
+     *
      * @param _id The ID of the troop to be removed.
      */
     @Override
@@ -76,6 +80,7 @@ public class TroopServiceImpl implements TroopService {
 
     /**
      * Function to check if a Troop exists.
+     *
      * @param _id Requires a Troop ID to be searched.
      * @return Returns true if the troop exists.
      */
